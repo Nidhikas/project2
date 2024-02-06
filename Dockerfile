@@ -26,7 +26,7 @@ RUN tar -zxf apache-maven-3.9.4-bin.tar.gz
 RUN tar -zxf jdk-21_linux-x64_bin.tar.gz
 RUN mv -f apache-tomcat-8.5.98/* /opt/download/extract/tomcat
 RUN mv -f apache-maven-3.9.4/* /opt/download/extract/maven
-RUN mv -f jdk-21/* /opt/download/extract/java
+RUN mv -f jdk-21.0.2/* /opt/download/extract/java
 
 # user add & maven,java configuration of bashrc entry
 RUN useradd -m -d /home/Nature4 -s /bin/bash Nature4
