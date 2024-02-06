@@ -18,7 +18,7 @@ WORKDIR /opt/download
 
 # Download minimal file of maven and java
 # ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78.tar.gz .
-ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz .
+ADD https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.98/bin/apache-tomcat-8.5.98.tar.gz .
 ADD https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz .
 COPY jdk-11.0.19_linux-x64_bin.tar.gz .
 RUN tar -zxf apache-tomcat-9.0.80.tar.gz
