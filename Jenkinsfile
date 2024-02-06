@@ -12,7 +12,7 @@ pipeline {
 	                 }}
 		stage('Deployment'){
 		    steps {
-			sh 'cp target/project2.war /home/nidhi/Documents/Devops_Software/apache-tomcat-9.0.76/webapps
+			sh 'cp target/project2.war /home/nidhi/Documents/Devops_Software/apache-tomcat-9.0.76/webapps'
 '
 			}}
 			stage('Docker build'){
