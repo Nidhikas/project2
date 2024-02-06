@@ -23,7 +23,7 @@ ADD https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin
 ADD https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz .
 RUN tar -zxf apache-tomcat-8.5.98.tar.gz
 RUN tar -zxf apache-maven-3.9.4-bin.tar.gz
-RUN tar -zxf jdk-21_linux-x64_bin.tar.g
+RUN tar -zxf jdk-21_linux-x64_bin.tar.gz
 RUN mv -f apache-tomcat-8.5.98/* /opt/download/extract/tomcat
 RUN mv -f apache-maven-3.9.4/* /opt/download/extract/maven
 RUN mv -f jdk-21/* /opt/download/extract/java
