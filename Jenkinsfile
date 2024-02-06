@@ -20,6 +20,6 @@ pipeline {
 			}}
 			stage('Container creation'){
 		    steps {
-			sh 'docker run -it -d --name=container-pipeline2 nidhikashyap18/pipeline-image1 /bin/bash'
+			sh 'docker run -it -d --name=sample-contain nidhikashyap18/pipeline-image1 /bin/bash'
 			}}	
 }}
