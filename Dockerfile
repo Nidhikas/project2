@@ -20,13 +20,13 @@ WORKDIR /opt/download
 # ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78.tar.gz .
 ADD https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.98/bin/apache-tomcat-8.5.98.tar.gz .
 ADD https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz .
-COPY  jdk-11.0.18_linux-x64_bin.tar.gz .
+COPY  /home/nidhi/Downloads/jdk-20_linux-x64_bin.tar.gz .
 RUN tar -zxf apache-tomcat-8.5.98.tar.gz
 RUN tar -zxf apache-maven-3.9.4-bin.tar.gz
-RUN tar -zxf jdk-11.0.18_linux-x64_bin.tar.gz
+RUN tar -zxf jdk-20_linux-x64_bin.tar.gz
 RUN mv -f apache-tomcat-8.5.98/* /opt/download/extract/tomcat
 RUN mv -f apache-maven-3.9.4/* /opt/download/extract/maven
-RUN mv -f jdk-11.0.18/* /opt/download/extract/java
+RUN mv -f jdk-20/* /opt/download/extract/java
 
 # user add & maven,java configuration of bashrc entry
 RUN useradd -m -d /home/Nature4 -s /bin/bash Nature4
