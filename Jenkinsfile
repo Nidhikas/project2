@@ -1,5 +1,11 @@
 pipeline {
 	agent any
+
+	environment {
+        DOCKER_REGISTRY = "nidhikashyap18"
+        DOCKER_CREDENTIAL_ID = 'dockerhub_id'
+        DOCKER_IMAGE_NAME = 'nidhikashyap18/pipeline-image1'
+    }
 	
 	stages {
 	    stage('Checkout') {
@@ -13,6 +19,7 @@ pipeline {
 		stage('Deployment'){
 		    steps {
 			sh 'cp target/project2.war /home/nidhi/Documents/Devops_Software/apache-tomcat-9.0.76/webapps'
+
 			}}
 			stage('Docker build'){
 		    steps {
@@ -20,6 +27,17 @@ pipeline {
 			}}
 			stage('Container creation'){
 		    steps {
-			sh 'docker run -it -d --name=sample-contain nidhikashyap18/pipeline-image1 /bin/bash'
-			}}	
+			sh 'docker run -it -d --name=container-pipeline2 nidhikashyap18/pipeline-image1 /bin/bash'
+			}}
+			stage('Build and Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry(nidhikashyap18, dockerhub_id) {
+                        def customImage = docker.build(nidhikashyap18/pipeline-image1)
+                        customImage.push()
+                    }
+                }
+            }
+        }	
+
 }}
