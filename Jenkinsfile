@@ -1,12 +1,5 @@
 pipeline {
-	agent any
-
-	environment {
-        DOCKER_REGISTRY = "nidhikashyap18"
-        DOCKER_CREDENTIAL_ID = 'dockerhub_id'
-        DOCKER_IMAGE_NAME = 'nidhikashyap18/pipeline-image1'
-    }
-	
+	agent any	
 	stages {
 	    stage('Checkout') {
 	        steps {
@@ -23,21 +16,27 @@ pipeline {
 			}}
 			stage('Docker build'){
 		    steps {
-			sh 'docker build -t nidhikashyap18/pipeline-image1 .'
+			sh 'docker build -t nidhikashyap18/pipeline-image-1 .'
 			}}
 			stage('Container creation'){
 		    steps {
-			sh 'docker run -it -d --name=container-pipeline2 nidhikashyap18/pipeline-image1 /bin/bash'
+			sh 'docker run -it -d --name=container-pipeline-1 nidhikashyap18/pipeline-image-1 /bin/bash'
 			}}
-			stage('Build and Push Docker Image') {
+		stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry(nidhikashyap18, dockerhub_id) {
-                        def customImage = docker.build(nidhikashyap18/pipeline-image1)
-                        customImage.push()
+                    // Log in to Docker Hub
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub_id', usernameVariable: 'nidhikashyap18', passwordVariable: 'Nidhi@1999')]) {
+                        sh "echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin"
                     }
+                    
+                    // Tag the Docker image
+                    sh 'docker tag pipeline-image-1 nidhikashyap18/pipeline-image-1'
+                    
+                    // Push the Docker image to Docker Hub
+                    sh 'docker push nidhikashyap18/pipeline-image-1'
                 }
             }
-        }	
+        }		
 
 }}
